@@ -1,0 +1,19 @@
+# Challenge G
+
+my_play = [:c2, :e2, :g2, :b2, :c3, :b2, :g2, :e2]
+index = 0
+
+
+use_bpm 160
+use_synth :saw
+
+live_loop :beat do
+  8.times do
+    play (my_play[index])
+    sleep 0.5
+    index = index + 1
+    print index
+  end
+  index = 0
+end
+
