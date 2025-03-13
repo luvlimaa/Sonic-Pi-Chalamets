@@ -1,0 +1,85 @@
+#Challenge H
+
+define :changePlay do |first, second|
+  play first
+  play second
+  sleep 0.5
+end
+
+# MEASURE 1 ---------------------------
+changePlay :a4, :a5
+
+changePlay :a4, :a5
+
+changePlay :c5, :c6
+
+changePlay :a4, :a5
+
+changePlay :d5, :d6
+
+changePlay :a4, :a5
+
+changePlay :e5, :e6
+
+changePlay :d5, :d6
+
+
+# MEASURE 2 ---------------------------
+changePlay :c5, :c6
+
+changePlay :c5, :c6
+
+changePlay :e5, :e6
+
+changePlay :c5, :c6
+
+changePlay :c5, :c6
+
+changePlay :g5, :g6
+
+changePlay :c4, :c5
+
+changePlay :e5, :e6
+
+changePlay :c4, :c5
+
+
+# MEASURE 3 ---------------------------
+
+changePlay :g4, :g5
+
+changePlay :g4, :g5
+
+changePlay :b4, :b5
+
+changePlay :b4, :b5
+
+changePlay :g4, :g5
+
+changePlay :c5, :c6
+
+changePlay :g4, :g5
+
+changePlay :d5, :d6
+
+changePlay :c5, :c6
+
+
+# MEASURE 4 ---------------------------
+
+changePlay :f4, :f5
+
+changePlay :f4, :f5
+
+changePlay :a4, :a5
+
+changePlay :f4, :f5
+
+changePlay :c5, :c6
+
+changePlay :f4, :f5
+
+changePlay :c5, :c6
+
+changePlay :b4, :b5
+
