@@ -1,0 +1,92 @@
+
+
+beatdrop = "C:/Users/halima_daniels/Downloads/80s (1).wav"
+clap = "C:/Users/halima_daniels/Downloads/clap (1).wav"
+purge = "C:/Users/halima_daniels/Documents/Audacity/purgesampfinal.wav"
+cor = "C:/Users/halima_daniels/Documents/Audacity/cor.wav"
+passion = "C:/Users/halima_daniels/Documents/Audacity/passion.wav"
+
+# Print durations (for reference)
+print sample_duration cor
+print sample_duration purge
+
+# Initial glitch and beat
+sample :glitch_robot1
+sleep 1
+sample beatdrop
+sample clap
+
+# Fade-in effect
+define :fade_in_booms do |start_amp, steps, interval|
+  steps.times do |i|
+    sample :bd_boom, amp: start_amp - i
+    sleep interval
+  end
+end
+
+fade_in_booms(8, 8, 0.5)
+
+# Melody builder
+define :play_sequence do |notes, durations|
+  notes.zip(durations).each do |n, d|
+    play n
+    sleep d
+  end
+end
+
+# Measures
+define :measure1 do
+  play_sequence [:c4, :c4, :c4, :c4, :c4], [1, 0.5, 0.5, 0.5, 0.5]
+  sleep 1
+end
+
+define :measure2 do
+  sleep 1.75
+  play_sequence [:g3, :c4, :c4, :g3, :g3], [0.25, 0.5, 0.5, 0.5, 0.5]
+end
+
+define :measure3 do
+  play_sequence [:g3, :g3, :g3, :g3, :g3], [1, 0.5, 0.5, 0.5, 0.5]
+  sleep 1
+end
+
+define :measure4 do
+  sleep 2
+  play_sequence [:ab3, :ab3, :b3, :b3], [0.5, 0.5, 0.5, 0.5]
+end
+
+# Synth setup
+use_synth :tri
+
+# Main sequence
+measure1
+measure2
+measure3
+measure4
+
+# Interlude sample
+sample passion
+sleep sample_duration passion
+
+# Layered samples
+sample cor
+sleep 10
+
+sample purge
+sleep sample_duration purge
+
+# Outro pattern
+define :play_pair_loop do |note1, note2, reps, duration|
+  reps.times do
+    play note1
+    sleep duration
+    play note2
+    sleep duration
+  end
+end
+
+play_pair_loop(:e4, :b3, 2, 1)
+
+# Final glitch hit
+sample :glitch_robot1
+sleep 2
